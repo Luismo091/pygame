@@ -19,8 +19,10 @@ GAME_OVER = 2
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.Surface([50, 50])
-        self.image.fill((0, 255, 0))
+        original_image = pygame.image.load("Hai.png")  # Cargar la imagen del jugador desde un archivo
+        scaled_width = 50  # Ancho deseado para la imagen redimensionada
+        scaled_height = 80  # Alto deseado para la imagen redimensionada
+        self.image = pygame.transform.scale(original_image, (scaled_width, scaled_height))
         self.rect = self.image.get_rect()
         self.rect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
         self.speed = 5
@@ -77,8 +79,10 @@ class Bullet(pygame.sprite.Sprite):
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, player):
         super().__init__()
-        self.image = pygame.Surface([30, 30])
-        self.image.fill((255, 0, 0))
+        original_image = pygame.image.load("BICHO.png")  # Cargar la imagen del enemigo desde un archivo
+        scaled_width = 50  # Ancho deseado para la imagen redimensionada
+        scaled_height = 50  # Alto deseado para la imagen redimensionada
+        self.image = pygame.transform.scale(original_image, (scaled_width, scaled_height))
         self.rect = self.image.get_rect()
         self.rect.x = SCREEN_WIDTH
         self.rect.y = random.randint(50, SCREEN_HEIGHT - 50)
